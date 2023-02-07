@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image, FlatList, ScrollView } from 'react-native'
+import {  StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native'
 import React, { useState } from 'react'
 
 {/* ///////////////////////////////////////////////// Flat List Start Here ////////////////////////////////////////////////*/}
@@ -41,14 +41,14 @@ const DATA = [
 
 const Item = ({title}) => (
   <View style={styles.itemflatelist}>
-    <Image style={styles.verificationcheck} source={require('./assets/check.png')} resizeMode= {'contain'}/>
+    <Image style={styles.verificationcheck} source={require('../../assets/check.png')} resizeMode= {'contain'}/>
     <Text style={styles.title}>{title}</Text>
   </View>
 );
 
 {/* ///////////////////////////////////////////////// Flat List End Here ////////////////////////////////////////////////*/}
 
-const VerificationReport = () => {
+const VerificationReport2 = () => {
 
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   return (
@@ -56,7 +56,7 @@ const VerificationReport = () => {
       <View style = {styles.headerSection}>
         <Text style = {styles.titleText}>Verification Report</Text>
         <Image
-                source={require('../VerificationReport/assets/download.png')}
+                source={require('../../assets/download.png')}
                 style={{width: 25, height: 30, justifyContent: 'flex-end',  }}
                 resizeMode= {'contain'}
             />
@@ -93,7 +93,7 @@ const VerificationReport = () => {
   )
 }
 
-export default App
+export default VerificationReport2
 
 const styles = StyleSheet.create({
   Container:{
@@ -129,8 +129,6 @@ const styles = StyleSheet.create({
   },
   gotoHomeBtn:{
     backgroundColor: 'linear-gradient(#5461FA 90%, rgba(150, 85, 243, 0.80396) 119.78%)',
-    // marginTop: 50,
-    // marginBottom:30,
     borderRadius:10,
     position: 'absolute',
     bottom:20,
@@ -165,8 +163,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   itemContainer:{
-    flexDirection: 'row',
-    
+    flexDirection: 'row', 
   },
   item:{
     color: '#000000',
