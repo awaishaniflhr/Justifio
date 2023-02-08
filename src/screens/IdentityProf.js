@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const IdentityProf = () => {
+const IdentityProf = (navigation) => {
   return (
     <View style={styles.container}>
         <View style={styles.navmenu}>

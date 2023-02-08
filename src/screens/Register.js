@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-const Register = () => {
+const Register = (navigation) => {
   return (
     <View style={styles.Container}>
       <Text style={styles.titleText}>Register</Text>
@@ -125,7 +125,7 @@ const Register = () => {
                 placeholderTextColor="#9D9D9D"/>
         </View>
         <View style={styles.RegisterButton}>
-            <TouchableOpacity style={styles.registerBtn} >
+            <TouchableOpacity style={styles.registerBtn} onPress={()=>navigation.navigate("Login")}  >
                 <Text style={styles.registerText}>Register</Text>
             </TouchableOpacity>
         </View>

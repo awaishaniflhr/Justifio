@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native'
 import React from 'react'
 
-const Login = (navigation) => {
+const Login = ({navigation}) => {
   return (
     <View style={styles.container}>
         <View style={styles.imgholder}>
@@ -50,7 +50,7 @@ const Login = (navigation) => {
                 placeholderTextColor="#9D9D9D"/>
         </View>
         <View style={styles.BtnContainer}>
-            <TouchableOpacity style={styles.loginBtn} >
+            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("IdentityProf")} >
                 <Text style={styles.loginText}>Login</Text>
             </TouchableOpacity>
             <View style={styles.optionContainer}>
@@ -59,7 +59,7 @@ const Login = (navigation) => {
                 <Text style={styles.orSeprator}>______________________</Text>
             </View>
             
-            <TouchableOpacity onPress={()=>navigation.navigate("Register")} style={styles.registerBtn} >
+            <TouchableOpacity  style={styles.registerBtn} onPress={()=>navigation.navigate("Register")} >
                 <Text style={styles.registerText}>Register</Text>
             </TouchableOpacity>
         </View>
