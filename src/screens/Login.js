@@ -50,7 +50,10 @@ const Login = ({navigation}) => {
                 placeholderTextColor="#9D9D9D"/>
         </View>
         <View style={styles.BtnContainer}>
-            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("IdentityProf")} >
+            <TouchableOpacity style={styles.loginBtn} 
+            onPress={()=>navigation.navigate("OTPScreen")} 
+            // onPress={()=>navigation.navigate("IdentityProf")} 
+            >
                 <Text style={styles.loginText}>Login</Text>
             </TouchableOpacity>
             <View style={styles.optionContainer}>

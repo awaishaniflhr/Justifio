@@ -9,7 +9,7 @@ const IdentityProf = (navigation) => {
                     source={require('../../assets/menu.png')}
                     style={{width: 25, height: 30, }}
                     resizeMode= {'contain'}
-                />
+            />
         </View>
         <View style={styles.titleContainer}>
             <Text style = {styles.tileText}>Prof of Identity</Text>

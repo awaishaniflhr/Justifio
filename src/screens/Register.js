@@ -1,7 +1,10 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Pressable, Modal, Alert } from 'react-native'
+
+import React, {useState} from 'react';
+import OTPInputView from '@twotalltotems/react-native-otp-input'
 
 const Register = (navigation) => {
+    const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.Container}>
       <Text style={styles.titleText}>Register</Text>
@@ -125,12 +128,68 @@ const Register = (navigation) => {
                 placeholderTextColor="#9D9D9D"/>
         </View>
         <View style={styles.RegisterButton}>
-            <TouchableOpacity style={styles.registerBtn} onPress={()=>navigation.navigate("Login")}  >
+            <Pressable
+                style={[styles.button, styles.registerBtn]}
+                onPress={() => setModalVisible(true)}>
                 <Text style={styles.registerText}>Register</Text>
-            </TouchableOpacity>
+            </Pressable>
+            {/* <TouchableOpacity style={styles.registerBtn} >
+                <Text style={styles.registerText}>Register</Text>
+            </TouchableOpacity> */}
         </View>
+        {/* modal start here */}
+
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setModalVisible(!modalVisible);
+            }}>
+                <View style={{flex:1, justifyContent:'center', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.65)'}}>
+                    <View style={{justifyContent:'center', alignItems: 'center', }}>
+                        
+                        <View style={styles.modalView}>
+                            <View style={styles.subContainer}>
+                                <Text style={styles.title}>Please check your email</Text>
+                                <Text style={styles.titleText}>We've Sent a Code to sherry.webevis@gmail.com</Text>
+                                <View style={styles.otpViewcontainer}>
+                                    <OTPInputView
+                                        style={{width: '90%', height: 20}}
+                                        pinCount={6}
+                                        autoFocusOnLoad
+                                        codeInputFieldStyle={styles.underlineStyleBase}
+                                        codeInputHighlightStyle={styles.underlineStyleHighLighted}
+                                        onCodeFilled = {(code => {console.log(`Code is ${code}, you are good to go!`)})}
+                                    />
+                                </View>
+                                <TouchableOpacity>
+                                    <Text style={styles.resendText}>Didn't Get a Code? Click to Resend.</Text>
+                                </TouchableOpacity>
+                                <View style={styles.buttons}>
+                                    <TouchableOpacity
+                                        style={[styles.button, styles.cancelBtn]}
+                                        onPress={() => setModalVisible(!modalVisible)}>
+                                        <Text style={styles.cancelBtntext}>Cancel</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={styles.verifyBtn}>
+                                        <Text style={styles.verifyBtntext}>Verify</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+            </View>
+        </Modal>
+
+
+
+        {/* Modal end here */}
+        
 
     </View>
+    
   )
 }
 
@@ -148,6 +207,9 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins',
         marginBottom: 30,
         fontWeight:700,
+        
+    },
+    centeredView:{
         
     },
     inputView:{
@@ -214,5 +276,116 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight:700,
       },
+    //   Modal Classes Start Here
+
+    modalView: {
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 20,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+      },
+      button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+      },
+      textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+      modalText: {
+        marginBottom: 15,
+        textAlign: 'center',
+        color: '#000000',
+      },
+    subContainer:{
+        backgroundColor:'white',
+        width:'100%',
+        height: '70%',
+        borderRadius: 35,
+    },
+    title:{
+        fontSize:26,
+        fontFamily:'Poppins',
+        color: '#5461FA',
+        textAlign: 'center',
+        marginBottom:10,
+        fontWeight: 700,
+    },
+    titleText:{
+        fontSize:14,
+        fontFamily:'Poppins',
+        color: '#000000',
+        marginBottom:40,
+        textAlign: 'center',
+        fontWeight: 500,
+    },
+    resendText:{
+        fontSize:14,
+        fontFamily:'Poppins',
+        color: '#000000',
+        marginTop:30,
+        textAlign: 'center',
+        fontWeight: 700,  
+    },    
+    borderStyleHighLighted: {
+        borderColor: "#03DAC6",
+    },
+    underlineStyleHighLighted: {
+        borderColor: "#5461FA",
+    },
+    otpViewcontainer:{
+        alignItems: 'center',   
+    },
+    buttons:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop:30,
+    },
+    cancelBtn:{
+        borderWidth:1,
+        borderColor: '#5461FA',
+        borderRadius:8,
+        backgroundColor: '#FFFFFF',
+        justifyContent: 'center',
+        width:150,
+        height:46,
+    },
+    cancelBtntext:{
+        fontSize:16,
+        fontFamily:'Poppins',
+        color: '#000000',   
+        textAlign: 'center',
+        fontWeight: 600, 
+    },
+    verifyBtn:{
+        borderWidth:1,
+        borderColor: '#5461FA',
+        borderRadius:8,
+        backgroundColor: '#5461FA',
+        justifyContent: 'center',
+        width:150,
+        height:46,
+    },
+    verifyBtntext:{
+        fontSize:16,
+        fontFamily:'Poppins',
+        color: '#FFFFFF',   
+        textAlign: 'center',
+        fontWeight: 600, 
+    },
+
+    // Modal Classes End Here
 
 })
