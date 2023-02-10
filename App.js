@@ -6,6 +6,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IdentityProf from './src/screens/IdentityProf';
 import Splash from './src/screens/Splash';
 import OTPScreen from './src/screens/OTPScreen';
+import Dashboard from './src/screens/Dashboard';
+import Camera from './src/screens/Camera';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +23,8 @@ const App = () => {
       <Stack.Screen name="Splash" component={Splash}  />
       <Stack.Screen name="Login" component={Login}  />
       <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Dashboard" component={Dashboard} />
+      <Stack.Screen name="Camera" component={Camera} />
       <Stack.Screen name="OTPScreen" component={OTPScreen}  />
       <Stack.Screen name="IdentityProf" component={IdentityProf} />
       

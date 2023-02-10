@@ -143,11 +143,12 @@ const Register = (navigation) => {
             animationType="slide"
             transparent={true}
             visible={modalVisible}
+            
             onRequestClose={() => {
             Alert.alert('Modal has been closed.');
             setModalVisible(!modalVisible);
             }}>
-                <View style={{flex:1, justifyContent:'center', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.65)'}}>
+                <View style={{flex:1, justifyContent:'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.7)'}}>
                     <View style={{justifyContent:'center', alignItems: 'center', }}>
                         
                         <View style={styles.modalView}>
@@ -158,10 +159,10 @@ const Register = (navigation) => {
                                     <OTPInputView
                                         style={{width: '90%', height: 20}}
                                         pinCount={6}
-                                        autoFocusOnLoad
+                                        autoFocusOnLoad={false}
                                         codeInputFieldStyle={styles.underlineStyleBase}
                                         codeInputHighlightStyle={styles.underlineStyleHighLighted}
-                                        onCodeFilled = {(code => {console.log(`Code is ${code}, you are good to go!`)})}
+                                        onCodeFilled = {code => {console.log(`Code is ${code}, you are good to go!`)}}
                                     />
                                 </View>
                                 <TouchableOpacity>
@@ -283,8 +284,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 20,
         padding: 20,
+        position: 'absolute',
         alignItems: 'center',
-        shadowColor: '#000',
+        shadowColor: '#000000',
         shadowOffset: {
           width: 0,
           height: 2,
@@ -293,6 +295,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
       },
+      
       button: {
         borderRadius: 20,
         padding: 10,
@@ -308,10 +311,18 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#000000',
       },
+      underlineStyleBase: {
+        fontSize:16,
+        fontFamily:'Poppins',
+        color: '#5461FA',
+
+      },
     subContainer:{
         backgroundColor:'white',
         width:'100%',
-        height: '70%',
+        paddingTop:30,
+        paddingBottom:30,
+        height: '100%',
         borderRadius: 35,
     },
     title:{

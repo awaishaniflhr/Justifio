@@ -51,7 +51,7 @@ const Login = ({navigation}) => {
         </View>
         <View style={styles.BtnContainer}>
             <TouchableOpacity style={styles.loginBtn} 
-            onPress={()=>navigation.navigate("OTPScreen")} 
+            onPress={()=>navigation.navigate("Dashboard")} 
             // onPress={()=>navigation.navigate("IdentityProf")} 
             >
                 <Text style={styles.loginText}>Login</Text>
