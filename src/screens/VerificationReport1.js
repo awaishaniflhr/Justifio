@@ -48,7 +48,7 @@ const Item = ({title}) => (
 
 {/* ///////////////////////////////////////////////// Flat List End Here ////////////////////////////////////////////////*/}
 
-const VerificationReport1 = () => {
+const VerificationReport1 = ({navigation}) => {
 
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
   return (
@@ -86,7 +86,7 @@ const VerificationReport1 = () => {
 
         </View>  
       </View>
-      <TouchableOpacity style={styles.gotoHomeBtn} >
+      <TouchableOpacity style={styles.gotoHomeBtn} onPress={()=>navigation.navigate("Dashboard")} >
         <Text style={styles.btntxt}>GO To Home</Text>
       </TouchableOpacity>
     </View>

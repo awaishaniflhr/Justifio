@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity,} from 'react-native'
-import React from 'react'
+import {React,useState} from 'react'
 
 
 const Dashboard = ({navigation}) => {
 
+const[selected, setSelected] = useState("Passport")
 
 
   return (
@@ -20,7 +21,7 @@ const Dashboard = ({navigation}) => {
             <Text style = {styles.subTitle}>Select a Document To Start The Verification Process.</Text>
             <View style={styles.subtextContainer}>
                 <Text style = {styles.subText}>Choose Your Identity Type</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity >
                         <Image
                             source={require('../../assets/recycle.png')}
                             style={{width: 18, height: 18,  }}
@@ -30,17 +31,22 @@ const Dashboard = ({navigation}) => {
             </View>        
         </View>
         <View style={styles.verifyBtn}>
-            <TouchableOpacity style={styles.verifyModBill}>
+            <TouchableOpacity
+            onPress={()=> setSelected('Passport')}
+            style={[styles.verifyModBill,{backgroundColor:selected === "Passport" ? 'blue' : 'grey'}]}>
                 <Text style={styles.verifymodtextBill}>Passport</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.verifyModFace}>
+            <TouchableOpacity
+            onPress={() =>setSelected("Driving Licence")
+            }
+            style={[styles.verifyModFace,{backgroundColor:selected === "Driving Licence" ? 'blue' : 'grey'}]}>
                 <Text style={styles.verifymodtext}>Driving Licence</Text>
             </TouchableOpacity>
         </View>
         <View style={styles.uploadbill}>
-        <TouchableOpacity style={styles.passportContainer} onPress={()=>navigation.navigate ("Camera")}> 
+        <TouchableOpacity style={styles.DrivingContainer} onPress={()=>navigation.navigate("Camera")}> 
             <View style={styles.uploadImg}>
-                <Text style={styles.uploadingText}>Upload an Image of Your Passport.</Text>
+                <Text style={styles.uploadingText}>Upload an Image of Your {selected}.</Text>
                 <Text style={styles.verifyText}>We Accept Only Clear Images.</Text>
             </View>
             <Image
@@ -80,7 +86,7 @@ const Dashboard = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
             
-            <TouchableOpacity style={styles.uploadbill}>
+            <TouchableOpacity style={styles.uploadbill} onPress={()=>navigation.navigate("CameraLicience")}>
                 <View style={styles.billContainer}>
                     <View style={styles.uploadImg}>
                         <Text style={styles.uploadingText}>Upload an Image of Your Utility Bills.</Text>
