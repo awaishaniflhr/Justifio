@@ -1,14 +1,11 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Pressable, Modal, Alert } from 'react-native'
 
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 
-
-const Camera = ({navigation,route}) => {
-    const {img,selected} = route.params;
+const CameraLicence = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(true);
-    // useEffect(() => { const timer = setTimeout(()=>{ navigation.replace('Camera')}, 5000);}, []);
-
+    
   return (
     <View style={styles.Container}>
 
@@ -24,18 +21,14 @@ const Camera = ({navigation,route}) => {
         {/*///////////////////////////////////////// modal start here /////////////////////////////////////////*/}
 
         <Modal
-        
-        
             animationType="slide"
             transparent={true}
             visible={modalVisible}
-
             
             onRequestClose={() => {
             Alert.alert('Modal has been closed.');
             setModalVisible(!modalVisible);
             }}>
-                
                 <View style={{flex:1, justifyContent:'center', alignItems: 'center',}}>
                     <View style={{justifyContent:'center', alignItems: 'center', }}>
 
@@ -48,7 +41,7 @@ const Camera = ({navigation,route}) => {
                                     <Image
                                         source={require('../../assets/close.png')}
                                         onPress={() => setModalVisible(!modalVisible)}
-                                        style={{width: 14, height: 14, marginTop:100, marginEnd:20, }}
+                                        style={{width: 14, height: 14, marginTop:50, marginEnd:20, }}
                                         resizeMode= {'contain'}
                                     />
                                 </TouchableOpacity>
@@ -58,12 +51,12 @@ const Camera = ({navigation,route}) => {
                             <View style={styles.subContainer}>
                                 <TouchableOpacity>
                                     <Image
-                                        source={img} 
-                                        style={{width: 208, height: 296, marginBottom: 30, marginTop:40}}
+                                        source={require('../../assets/licence.png')}
+                                        style={{width: 320, height: 188, marginBottom: 30, }}
                                         resizeMode= {'contain'}
                                     />
                                 </TouchableOpacity>
-                                <Text style={styles.title}>{selected} Verification</Text>
+                                <Text style={styles.title}>DRIVING LICENCE VERIFICATION</Text>
                                 <Text style={styles.titleText}>Now place your passport in front of camera within the frame </Text>
 
 
@@ -88,7 +81,7 @@ const Camera = ({navigation,route}) => {
   )
 }
 
-export default Camera
+export default CameraLicence
 
 const styles = StyleSheet.create({
     Container:{
@@ -127,7 +120,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: 'white',
         alignItems: 'flex-end',
-        padding:20,
         flex:1,
 
         
@@ -156,9 +148,11 @@ const styles = StyleSheet.create({
       },
     subContainer:{
         backgroundColor:'white',
-        width:'100%',
         alignItems: 'center',
         height: '100%',
+        justifyContent: 'center',
+        marginEnd:35,
+        marginStart:35,
     },
     title:{
         fontSize:26,
@@ -172,42 +166,18 @@ const styles = StyleSheet.create({
         fontSize:14,
         fontFamily:'Poppins',
         color: '#000000',
-        marginBottom:40,
         textAlign: 'center',
         fontWeight: 500,
     },
-    resendText:{
-        fontSize:14,
-        fontFamily:'Poppins',
-        color: '#000000',
-        marginTop:30,
-        textAlign: 'center',
-        fontWeight: 700,  
-    },    
-    borderStyleHighLighted: {
-        borderColor: "#03DAC6",
-    },
-    underlineStyleHighLighted: {
-        borderColor: "#5461FA",
-    },
-    otpViewcontainer:{
-        alignItems: 'center',   
-    },
+    
+
     buttons:{
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginTop:30,
     },
-    cancelBtn:{
-        borderWidth:1,
-        borderColor: '#5461FA',
-        borderRadius:8,
-        backgroundColor: '#FFFFFF',
-        justifyContent: 'center',
-        width:150,
-        height:46,
-    },
+ 
     cancelBtntext:{
         fontSize:16,
         fontFamily:'Poppins',

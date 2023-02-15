@@ -4,7 +4,9 @@ import {React,useState} from 'react'
 
 const Dashboard = ({navigation}) => {
 
-const[selected, setSelected] = useState("Passport")
+const [ selected, setSelected ] = useState ("Passport")
+const [ selected2, setSelected2 ] = useState (null)
+const [ selected3, setSelected3 ] = useState (null)
 
 
   return (
@@ -33,25 +35,28 @@ const[selected, setSelected] = useState("Passport")
         <View style={styles.verifyBtn}>
             <TouchableOpacity
             onPress={()=> setSelected('Passport')}
-            style={[styles.verifyModBill,{backgroundColor:selected === "Passport" ? 'blue' : 'grey'}]}>
-                <Text style={styles.verifymodtextBill}>Passport</Text>
+            style={[styles.verifyModBill,{backgroundColor:selected === "Passport" ? '#5461FA' : '#D9D9D9'}]}>
+                <Text style={[styles.verifymodtextBill, {}]}>Passport</Text>
             </TouchableOpacity>
             <TouchableOpacity
             onPress={() =>setSelected("Driving Licence")
             }
-            style={[styles.verifyModFace,{backgroundColor:selected === "Driving Licence" ? 'blue' : 'grey'}]}>
-                <Text style={styles.verifymodtext}>Driving Licence</Text>
+            style={[styles.verifyModFace,{backgroundColor:selected === "Driving Licence" ? '#5461FA' : '#D9D9D9', color:selected === "Driving Licence" ? '#000000' : '#FFFFFF'}]}>
+                <Text style={styles.verifymodtextBill}>Driving Licence</Text>
             </TouchableOpacity>
         </View>
         <View style={styles.uploadbill}>
-        <TouchableOpacity style={styles.DrivingContainer} onPress={()=>navigation.navigate("Camera")}> 
+        <TouchableOpacity style={styles.DrivingContainer} onPress={() => navigation.navigate('Camera',{
+            img:selected == 'Passport' ? require('../../assets/Objects.png') : require('../../assets/licence.png'),
+            selected:selected
+        })}> 
             <View style={styles.uploadImg}>
-                <Text style={styles.uploadingText}>Upload an Image of Your {selected}.</Text>
+                <Text style={styles.uploadingTextPassport}>Upload an Image of Your {selected}.</Text>
                 <Text style={styles.verifyText}>We Accept Only Clear Images.</Text>
             </View>
             <Image
                 source={require('../../assets/passport.png')}
-                style={{width: 40, height: 40, marginTop:5 }}
+                style={{width: 40, height: 40, marginTop:5, marginEnd: 5,  }}
                 resizeMode= {'contain'}
             />
             </TouchableOpacity>
@@ -60,7 +65,7 @@ const[selected, setSelected] = useState("Passport")
         
         <View style={styles.step2Container}>
         <Text style={styles.step2title}>STEP 2</Text>
-        <TouchableOpacity style={styles.uploadbill}>
+        <TouchableOpacity style={styles.selfieimg} onPress={() => navigation.navigate('SelfieCamera')}> 
             
             <View style={styles.selfiContainer}>
                 <View style={styles.uploadImg}>
@@ -78,18 +83,22 @@ const[selected, setSelected] = useState("Passport")
         <View style={styles.step3Container}>
             <Text style={styles.step3title}>STEP 3</Text>
                 <View style={styles.verifyBtn}>
-                    <TouchableOpacity style={styles.verifyModBill}>
+                    <TouchableOpacity 
+                    onPress={()=> setSelected2('Utility Bills')}
+                    style={[styles.verifyModBill,{backgroundColor:selected2 === "Utility Bills" ? '#5461FA' : '#D9D9D9'}]}>
                         <Text style={styles.verifymodtextBill}>Utility Bills</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.verifyModFace}>
+                    <TouchableOpacity 
+                    onPress={()=> setSelected2('Other Document')}
+                    style={[styles.verifyModFace,{backgroundColor:selected2 === "Other Document"? '#5461FA' : '#D9D9D9'}]}>
                         <Text style={styles.verifymodtext}>Other Document</Text>
                     </TouchableOpacity>
                 </View>
             
-            <TouchableOpacity style={styles.uploadbill} onPress={()=>navigation.navigate("CameraLicience")}>
+            <TouchableOpacity style={styles.uploadbill} onPress={()=>navigation.navigate("CameraLicence")}>
                 <View style={styles.billContainer}>
                     <View style={styles.uploadImg}>
-                        <Text style={styles.uploadingText}>Upload an Image of Your Utility Bills.</Text>
+                        <Text style={styles.uploadingTextBill}>Upload an Image of Your {selected2}.</Text>
                         <Text style={styles.verifyText}>(To Verify The Authenticity of Your ID)</Text>
                     </View>
                     
@@ -158,6 +167,10 @@ const styles = StyleSheet.create({
         flex:0.48,
         
     },
+    // selfieimg:{
+    //     width: 320,
+    //     height:300,
+    // },
     verifyModBill:{
         backgroundColor: '#5461FA',
         padding: 15,
@@ -190,11 +203,34 @@ const styles = StyleSheet.create({
     uploadImg:{
         
     },
+    DrivingContainer:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 20,
+        borderWidth:1,
+        borderStyle: 'dashed',
+        borderColor: '#5461FA',       
+        padding:15,
+    },
     uploadingText:{
         fontSize:16,
         fontFamily:'Poppins',
         fontWeight:700,
         color: '#000000',  
+    },
+    uploadingTextPassport:{
+        fontSize:16,
+        fontFamily:'Poppins',
+        fontWeight:700,
+        color: '#000000', 
+        width:"95%",
+    },
+    uploadingTextBill:{
+        fontSize:16,
+        fontFamily:'Poppins',
+        fontWeight:700,
+        color: '#000000', 
+        width:"90%",
     },
     verifyText:{
         fontSize:14,

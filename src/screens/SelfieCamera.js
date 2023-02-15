@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Pressable, 
 import React, {useState} from 'react';
 
 
-const CameraLicience = ({navigation}) => {
+const SelfieCamera = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(true);
+    
   return (
     <View style={styles.Container}>
 
@@ -12,7 +13,7 @@ const CameraLicience = ({navigation}) => {
             <TouchableOpacity
                 style={[styles.button, styles.registerBtn]}
                 onPress={() => setModalVisible(true)}>
-                <Text style={styles.registerText}>Camera Screen</Text>
+                <Text style={styles.registerText}>Take Your Selfie</Text>
             </TouchableOpacity>
 
         </View>
@@ -50,13 +51,13 @@ const CameraLicience = ({navigation}) => {
                             <View style={styles.subContainer}>
                                 <TouchableOpacity>
                                     <Image
-                                        source={require('../../assets/licience.png')}
+                                        source={require('../../assets/faceRecognition.png')}
                                         style={{width: 320, height: 188, marginBottom: 30, }}
                                         resizeMode= {'contain'}
                                     />
                                 </TouchableOpacity>
-                                <Text style={styles.title}>DRIVING LICENCE VERIFICATION</Text>
-                                <Text style={styles.titleText}>Now place your passport in front of camera within the frame </Text>
+                                <Text style={styles.title}>face recognition</Text>
+                                <Text style={styles.titleText}>Scan Your Face to Verify your Identity</Text>
 
 
                                 <View style={styles.buttons}>
@@ -80,7 +81,7 @@ const CameraLicience = ({navigation}) => {
   )
 }
 
-export default CameraLicience
+export default SelfieCamera
 
 const styles = StyleSheet.create({
     Container:{

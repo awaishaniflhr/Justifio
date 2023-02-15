@@ -10,8 +10,11 @@ import Dashboard from './src/screens/Dashboard';
 import Camera from './src/screens/Camera';
 import PictureModal from './src/screens/PictureModal';
 import VerificationReport1 from './src/screens/VerificationReport1';
-import CameraLicience from './src/screens/CameraLicience';
 import CameraPassport from './src/screens/CameraPassport';
+import CameraLicence from './src/screens/CameraLicence';
+import SelfieCamera from './src/screens/SelfieCamera';
+import MyDashboard from './src/screens/MyDashboard';
+
 
 
 
@@ -30,11 +33,13 @@ const App = () => {
       <Stack.Screen name="Dashboard" component={Dashboard} />
       <Stack.Screen name="Camera" component={Camera} />
       <Stack.Screen name="PictureModal" component={PictureModal} />
-      <Stack.Screen name="CameraLicience" component={CameraLicience} />
+      <Stack.Screen name="CameraLicence" component={CameraLicence} />
       <Stack.Screen name="VerificationReport1" component={VerificationReport1} />
       <Stack.Screen name="CameraPassport" component={CameraPassport} />
       <Stack.Screen name="OTPScreen" component={OTPScreen}  />
+      <Stack.Screen name="SelfieCamera" component={SelfieCamera}  />
       <Stack.Screen name="IdentityProf" component={IdentityProf} />
+      <Stack.Screen name="MyDashboard" component={MyDashboard} />
     
       
       

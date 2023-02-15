@@ -50,7 +50,7 @@ const CameraPassport = ({navigation}) => {
                             <View style={styles.subContainer}>
                                 <TouchableOpacity>
                                     <Image
-                                        source={require('../../assets/licience.png')}
+                                        source={require('../../assets/licence.png')}
                                         style={{width: 320, height: 188, marginBottom: 30, }}
                                         resizeMode= {'contain'}
                                     />

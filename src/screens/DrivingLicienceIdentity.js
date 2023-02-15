@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const DrivingLicienceIdentity = (navigation) => {
+const DrivinglicenceIdentity = (navigation) => {
   return (
     <View style={styles.container}>
         <View style={styles.navmenu}>
@@ -43,7 +43,7 @@ const DrivingLicienceIdentity = (navigation) => {
   )
 }
 
-export default DrivingLicienceIdentity
+export default DrivinglicenceIdentity
 
 const styles = StyleSheet.create({
     container:{

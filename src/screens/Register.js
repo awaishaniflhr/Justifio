@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Pressable, 
 import React, {useState} from 'react';
 import OTPInputView from '@twotalltotems/react-native-otp-input'
 
-const Register = (navigation) => {
+const Register = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.Container}>
@@ -137,7 +137,8 @@ const Register = (navigation) => {
                 <Text style={styles.registerText}>Register</Text>
             </TouchableOpacity> */}
         </View>
-        {/* modal start here */}
+
+        {/*////////////////////////////////////////////////// modal start here ////////////////////////////////////////////////// */}
 
         <Modal
             animationType="slide"
@@ -174,7 +175,8 @@ const Register = (navigation) => {
                                         onPress={() => setModalVisible(!modalVisible)}>
                                         <Text style={styles.cancelBtntext}>Cancel</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={styles.verifyBtn}>
+                                    <TouchableOpacity style={styles.verifyBtn}
+                                    onPress={()=>navigation.navigate("MyDashboard")} >
                                         <Text style={styles.verifyBtntext}>Verify</Text>
                                     </TouchableOpacity>
                                 </View>
