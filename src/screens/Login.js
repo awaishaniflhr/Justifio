@@ -1,16 +1,34 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native'
 import React from 'react'
-
+import { SliderBox } from "react-native-image-slider-box";
 const Login = ({navigation}) => {
+  const images = [
+  
+    require('../../assets/signup1.png'), 
+     require('../../assets/signup2.png'),      
+  ]
   return (
     <View style={styles.container}>
-        <View style={styles.imgholder}>
-            <Image
-                source={require('../../assets/profile.png')}
-                style={{width: 241 , height: 258, marginTop:50,  }}
+
+        <SliderBox
+            images={images}
+            sliderBoxHeight={200}
+            autoplay
+            circleLoop
+            dotStyle={{
+              width: 0,
+              height: 0,
+            }}
+            style={{marginTop:50, marginBottom:30,}}
+            resizeMethod={'resize'}
+            resizeMode={'contain'}
+        />
+            {/* <Image
+                source={require('../../assets/signup1.png')}
+                style={{width: 333 , height: 258, marginTop:50,  }}
                 resizeMode= {'contain'}
-            />
-        </View>
+            /> */}
+  
         <View style={styles.title}>
         <Text style={styles.titletext}>Sign in to Verify</Text>
         <Text style={styles.subtitletext}>Experience The User Journey Similar Toour Sdk’s Flow</Text>

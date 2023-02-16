@@ -2,11 +2,27 @@ import { StyleSheet, Text, View, Image, TouchableOpacity,} from 'react-native'
 import {React,useState} from 'react'
 
 
+import IdentityProf from './IdentityProf';
+import PictureModal from './PictureModal';
+
+
 const Dashboard = ({navigation}) => {
 
 const [ selected, setSelected ] = useState ("Passport")
 const [ selected2, setSelected2 ] = useState (null)
 const [ selected3, setSelected3 ] = useState (null)
+
+
+
+
+function MyDrawer({navigation}) {
+    return (
+      <Drawer.Navigator>
+        <Drawer.Screen name="IdentityProf" component={IdentityProf} />
+        <Drawer.Screen name="PictureModal" component={PictureModal} />
+      </Drawer.Navigator>
+    );
+  }
 
 
   return (
@@ -109,9 +125,7 @@ const [ selected3, setSelected3 ] = useState (null)
                     />  
                 </View>
             </TouchableOpacity>
-        </View>  
-
-      
+        </View>   
     </View>
   )
 }

@@ -4,16 +4,16 @@ import {React,useState} from 'react'
 const MyDashboard = ({navigation}) => {
 const [ selected, setSelected ] = useState ("Passport")
 
-// const image = {uri: 'https://reactjs.org/logo-og.png'};
+
   return (
     <View style={styles.containerMyDashboard}>
-        <View style={styles.navmenu}>
+        <TouchableOpacity style={styles.navmenu}>
             <Image
-                    source={require('../../assets/menu.png')}
-                    style={{width: 25, height: 30, }}
-                    resizeMode= {'contain'}
+                source={require('../../assets/menu.png')}
+                style={{width: 25, height: 30, }}
+                resizeMode= {'contain'}
             />
-        </View>
+        </TouchableOpacity>
         <View style={styles.componentMyDashboard}>
             
             <Image
@@ -66,8 +66,8 @@ const [ selected, setSelected ] = useState ("Passport")
         </View>
         <View style={styles.uploadbill}>
         <TouchableOpacity style={styles.DrivingContainer} onPress={() => navigation.navigate('Camera',{
-            img:selected == 'Passport' ? require('../../assets/licencePicker.png') : require('../../assets/licencePicker.png'),
-            selected:selected
+            img:selected == 'Passport' ? require('../../assets/passportPicker.png') : require('../../assets/licencePicker.png'),
+            
         })}> 
             <View style={styles.uploadImg}>
                 <Text style={styles.uploadingTextPassport}>Upload an Image of Your {selected}.</Text>
